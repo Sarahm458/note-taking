@@ -10,7 +10,7 @@ function App() {
     <Routes>
       <Route path='/' element={<NavBar/>}>
         <Route path='/' element={<NoteCreation/>}/>
-        <Route path='/edit-note' element={<NoteEditing/>}/>
+        <Route path="/edit/:noteId" element={<NoteEditing/>}/>
         <Route path='/notes' element={<NoteDisplay/>}/>
       </Route>
     </Routes>

@@ -16,7 +16,7 @@ const NoteDisplay = () => {
             <p>{note.content}</p>
             <button
               onClick={() => dispatch(deleteNote(note.id))}
-              className="bg-red-500 text-white p-1 mt-2"
+              className="bg-purple-500 text-white p-1 mt-2"
             >
               Delete
             </button>

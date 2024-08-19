@@ -34,7 +34,7 @@ const NoteEditing = () => {
             onChange={(e) => setContent(e.target.value)}
             className="border p-2 w-full"
           />
-          <button onClick={handleUpdate} className="bg-green-500 text-white p-2 mt-2">
+          <button onClick={handleUpdate} className="bg-gradient-to-r from-blue-500 to-purple-500 text-white p-2 mt-2">
             Update Note
           </button>
         </>

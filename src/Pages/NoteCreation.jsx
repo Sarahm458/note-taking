@@ -1,10 +1,17 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { addNote } from '../notesSlice';
 
 const NoteCreation = () => {
   const [content, setContent] = useState('');
-
+  const dispatch = useDispatch();
 
   const handleSubmit = () => {
+    dispatch(addNote({
+      id: Date.now(),
+      content,
+    }));
+    setContent('');
   };
 
   return (

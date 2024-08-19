@@ -10,9 +10,9 @@ const NavBar = () => {
         <div className="flex items-center gap-2">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            height="20px"
+            height="15px"
             viewBox="0 0 24 24"
-            width="20px"
+            width="15px"
             fill="#FFFFFF"
           >
             <path d="M0 0h24v24H0z" fill="none" />

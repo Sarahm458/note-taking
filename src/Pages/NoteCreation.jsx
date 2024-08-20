@@ -1,16 +1,24 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addNote } from '../notesSlice';
 
 const NoteCreation = () => {
   const [content, setContent] = useState('');
   const dispatch = useDispatch();
+  const notes = useSelector((state) => state.notes);
+
+  const saveNotesToLocalStorage = (notes) => {
+    localStorage.setItem('notes', JSON.stringify(notes));
+  };
 
   const handleSubmit = () => {
-    dispatch(addNote({
+    const newNote = {
       id: Date.now(),
       content,
-    }));
+    };
+    dispatch(addNote(newNote));
+    const updatedNotes = [...notes, newNote];
+    saveNotesToLocalStorage(updatedNotes);
     setContent('');
   };
 
@@ -33,3 +41,4 @@ const NoteCreation = () => {
 };
 
 export default NoteCreation;
+

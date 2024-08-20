@@ -5,7 +5,8 @@ import { useParams, useNavigate } from 'react-router-dom';
 
 const NoteEditing = () => {
   const { noteId } = useParams();
-  const note = useSelector((state) => state.notes.find((n) => n.id === Number(noteId)));
+  const notes = useSelector((state) => state.notes);
+  const note = notes.find((n) => n.id === Number(noteId));
   const [content, setContent] = useState('');
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -16,11 +17,18 @@ const NoteEditing = () => {
     }
   }, [note]);
 
+  const saveNotesToLocalStorage = (notes) => {
+    localStorage.setItem('notes', JSON.stringify(notes));
+  };
+
   const handleUpdate = () => {
-    dispatch(updateNote({
+    const updatedNote = {
       id: Number(noteId),
       content,
-    }));
+    };
+    dispatch(updateNote(updatedNote));
+    const updatedNotes = notes.map((n) => (n.id === Number(noteId) ? updatedNote : n));
+    saveNotesToLocalStorage(updatedNotes);
     navigate('/notes');
   };
 
